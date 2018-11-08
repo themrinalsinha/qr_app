@@ -25,7 +25,7 @@ SECRET_KEY = '0f1%0%i=ozi^4i%6x#bvte$z&bgr$&c8zwjrl8)@c80uo9)brj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -37,6 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # QR library app
+    'qr_code',
+
+    # Custom Apps
+    'app',
 ]
 
 MIDDLEWARE = [
@@ -76,7 +82,7 @@ WSGI_APPLICATION = 'qr_app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'qr_app.db'),
     }
 }
 
