@@ -105,6 +105,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+    },
+    'qr-code': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'qr-code-cache',
+        'TIMEOUT': 3600
+    }
+}
+
+# https://django-qr-code.readthedocs.io/en/latest/pages/README.html
+QR_CODE_CACHE_ALIAS = 'qr-code'
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.1/topics/i18n/

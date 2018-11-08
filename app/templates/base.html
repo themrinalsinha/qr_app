@@ -1,0 +1,21 @@
+<!-- {% load qr_code %}
+
+<img src="{% qr_url_from_text 'TheMrinalSinha' cache_enabled=True %}" alt="Hello World!"> -->
+
+{% load qr_code %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>QR Generator</title>
+    </head>
+    <body>
+        <form method="POST" action="">{% csrf_token %}
+            <input type="text" name="user_input" placeholder="Enter Text">
+            <button type="submit" value="submit">Submit</button>
+        </form>
+        {% if popup %}
+            <img src="{% qr_url_from_text user_input cache_enabled=True options=config %}" alt="{{ user_input }}">
+        {% endif %}
+    </body>
+</html>
