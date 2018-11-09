@@ -13,44 +13,33 @@
     </head>
     <body>
         <div class="container">
-            <nav class="navbar navbar-dark bg-dark">
-                <a class="navbar-brand" href="#">QR Code Generator</a>
-            </nav>
-
-            <form class="form-inline" method="POST" action="">{% csrf_token %}
-                <div class="form-row" style="padding:20px">
-                    <div class="col">
-                        <input class="form-control form-control-lg" name="user_input" type="text" placeholder="Enter text to convert">
-                    </div>
-                    <div class="col">
-                        <button type="submit" class="btn btn-info btn-lg form-control">Convert</button>
-                    </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="navbar navbar-dark bg-dark">
+                        <a class="navbar-brand" href="#">QR CODE Generator</a>
+                    </nav>
                 </div>
-            </form>
-
-
-
-            {% if popup %}
-            <img src="{% qr_url_from_text user_input cache_enabled=True options=config %}" alt="{{ user_input }}">
-            {% endif %}
-
+                <div class="col-sm-12">
+                    <form class="form-inline" method="POST" action="">{% csrf_token %}
+                        <input style="padding: 20px; margin: 20px; width: 100%" class="form-control form-control-lg" name="user_input" id="user_input" type="text" placeholder="Enter text to convert">
+                    </form>
+                </div>
+                <div class="col-sm-12" style="text-align: center">
+                    {% if popup %}
+                        <div class="col-sm-12">
+                            <img src="{% qr_url_from_text user_input cache_enabled=True options=config %}" alt="{{ user_input }}">
+                        </div>
+                        <div class="col-sm-12">
+                            <p>QR for : <b>{{ user_input }}</b></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
         </div>
-
-
-
-
-
-
-        <!-- <form method="POST" action="">{% csrf_token %}
-            <input type="text" name="user_input" placeholder="Enter Text">
-            <button type="submit" value="submit">Submit</button>
-        </form>
-        {% if popup %}
-            <img src="{% qr_url_from_text user_input cache_enabled=True options=config %}" alt="{{ user_input }}">
-        {% endif %} -->
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
     </body>
 </html>
